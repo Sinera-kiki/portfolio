@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.cowork/
+.cowork.json
+*.zip
+.DS_Store
+*.local
