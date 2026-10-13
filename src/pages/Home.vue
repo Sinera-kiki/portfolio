@@ -25,9 +25,9 @@ const experiences = [
     company: '小红书 · 专业号治理',
     desc: '参与专业号资质造假治理，负责机审链路、策略迭代及自动化风控工作流建设。',
     metrics: [
-      { value: '13% → 5%', label: '整体违规浓度下降' },
-      { value: '51% → 7%', label: '金融行业违规浓度下降' },
-      { value: '36% → 15%', label: '房地产行业违规浓度下降' },
+      { value: '13.37% → 1.93%', label: '新入驻资质造假浓度' },
+      { value: '67% → 2.89%', label: '金融行业造假浓度' },
+      { value: '41% → 7.51%', label: '房地产行业造假浓度' },
     ],
   },
   {
@@ -55,39 +55,77 @@ const experiences = [
 const projects = [
   {
     num: 'Project 01',
+    featured: true,
     title: '专业号资质造假智能化治理',
     org: '小红书 · AI 智能治理产品经理 · 2026.07 - 至今',
-    context: '专业号入驻阶段，资质图片存在模板复用、单图篡改与协同注册等风险，人工抽样难以持续监控，需要打通风险感知、归因、拦截与回扫的智能化链路。',
-    actions: [
-      '围绕“模版与单点”双维度评估专业号入驻违规浓度，设计水位监测及归因看板，支持按行业、渠道、造假手法和漏过策略下钻',
-      '将相似图片聚簇能力产品化，设计“抽样、聚簇、标注、指标计算、看板监控、结果反哺”的周度评估工作流，沉淀风险标签、标注流程与归因 SOP',
-      '基于 SQL 分析识别约 75% 的模板复用风险和 25% 的同日协同注册风险，迭代机审前置拦截策略，新增 T+1 回扫兜底，形成算法初筛、人工复核、批量处置、策略迭代闭环'
+    context: '7月初风险感知团队反馈一批利用相似的资质图片批量入驻的违规账号，疑似黑产入侵。我们对专业号的入驻流程及存量账号的入驻材料进行分析，发现对公打款绕过、同名法人人脸识别绕过、资质材料造假等问题。黑产手法多样且对抗持续升级，人工审核和常规机审均难以有效拦截。',
+    metrics: [
+      { value: '13.37% → 1.93%', label: '新入驻资质造假浓度' },
+      { value: '67% → 2.89%', label: '金融行业造假浓度' },
+      { value: '41% → 7.51%', label: '房地产行业造假浓度' },
     ],
-    result: '策略上线后，整体违规浓度从 13% 降至 5%，金融行业从 51% 降至 7%，房地产行业从 36% 降至 15%。',
+    actions: [
+      {
+        tag: '指标体系建设',
+        text: '为看清风险规模，实时监控问题，与算法、数分、评估团队合作，自研算法能力，设计风险标签、标注流程与指标口径，搭建自动化评估工作流，设计指标看板，监控入驻量级变化、行业造假率、同主体/同设备/同付款信息聚合数据、机审漏放数据等多维度指标，发现异动并追溯归因，实现「感知→归因→迭代」。'
+      },
+      {
+        tag: '治理方案落地',
+        text: '针对打款漏洞问题进行修复，造假严重行业下线平台对客户打款；针对同名法人人脸识别绕过问题，上线企业四要素校验；资质造假方面，对于模版造假问题，上线相似模板与高危模板库拦截策略；对于单图造假问题，采买合合信息文字篡改识别能力，自研二维码比对与假公章识别能力，接入机审工作流进行拦截。'
+      },
+      {
+        tag: '团伙识别建设',
+        text: '治理动作后，对抗持续升级，但现有能力大多支持单个账号违规识别，团伙扩散能力缺失，「打一个、漏一批」问题长期存在。分析已发现的黑产账号特征，梳理账号关联介质，按强弱分级设计建图规则，整理数据需求与口径，与算法、数仓合作搭建团伙识别图谱。'
+      }
+    ],
+    result: '治理动作上线后，新入驻资质造假浓度从 13.37% 降至 1.93%，金融行业造假浓度从 67% 降至 2.89%，房地产行业造假浓度由 41% 降至 7.51%。',
     repo: 'https://github.com/Sinera-kiki/pro-qual-fraud-eval',
   },
   {
     num: 'Project 02',
+    featured: false,
     title: '多媒体 Agent 混合架构设计',
     org: '科大讯飞 · 车载 AI 语音产品经理 · 2025.11 - 2026.03',
     context: '车载多媒体语音场景下，音乐类问题有 48% 源于功能缺失、33% 源于语义理解偏差，单纯依赖大模型生成效果不可控。',
     actions: [
-      '清洗归因数万条历史语音日志，确立“功能补全优先于 AI 优化”的业务路径',
-      '针对功能缺失问题，参与竞品调研，整理高频指令清单，推动功能工程落地',
-      '针对语义理解偏差问题，参与制定并落地“本地规则为主，云端 LLM 为辅”的混合架构'
+      {
+        tag: '业务路径确立',
+        text: '清洗归因数万条历史语音日志，确立“功能补全优先于 AI 优化”的业务路径。'
+      },
+      {
+        tag: '高频功能落地',
+        text: '针对功能缺失问题，参与竞品调研，整理高频指令清单，推动功能工程落地。'
+      },
+      {
+        tag: '混合架构设计',
+        text: '针对语义理解偏差问题，参与制定并落地“本地规则为主，云端 LLM 为辅”的混合架构。'
+      }
     ],
     result: '标准指令成功率提升至 90%，模糊指令提升至 85%，在保障响应速度的同时大幅提升泛化能力。',
   },
   {
     num: 'Project 03',
+    featured: false,
     title: 'Colormind AI 实训平台',
     org: '杉数科技 · 大模型产品经理 · 2025.04 - 2025.09',
     context: '传统问答式大模型缺少教学上下文，高校课程与真实工作场景脱节，同时缺乏可量化的 AI 能力评价方式。',
     actions: [
-      '将 AI 能力封装为可编排的教学叶节点，设计单/多 Agent 模式，支持系统 Prompt、多角色及私有数据集绑定',
-      '设计“阅读任务简报—组建 Agent 团队—完成实训任务”的项目制工作流，让学生在真实业务情境中完成探索与建模',
-      '参与实训工具与课程组件管理模块设计，补齐输入输出合规校验、权限下发及教学调用额度看板',
-      '从 0 到 1 搭建 AI 过程评价看板，以提问清晰度、多轮对话深度、任务达成率评估学生的 AI 使用能力'
+      {
+        tag: '教学节点解耦',
+        text: '将 AI 能力封装为可编排的教学叶节点，设计单/多 Agent 模式，支持系统 Prompt、多角色及私有数据集绑定。'
+      },
+      {
+        tag: '任务流式驱动',
+        text: '设计“阅读任务简报—组建 Agent 团队—完成实训任务”的项目制工作流，让学生在真实业务情境中完成探索与建模。'
+      },
+      {
+        tag: '组件与权限管控',
+        text: '参与实训工具与课程组件管理模块设计，补齐输入输出合规校验、权限下发及教学调用额度看板。'
+      },
+      {
+        tag: '量化过程评价',
+        text: '从 0 到 1 搭建 AI 过程评价看板，以提问清晰度、多轮对话深度、任务达成率评估学生的 AI 使用能力。'
+      }
     ],
     result: '平台完成二期开发并上线，与上海立信、宿迁学院、上海交大等高校达成合作，预计交付额千万元。',
   },
@@ -265,25 +303,92 @@ const playgrounds = [
       <div class="section-label" data-reveal>— Selected Projects</div>
       <h2 class="section-title" data-reveal>核心项目</h2>
       <div class="projects-grid">
-        <article v-for="p in projects" :key="p.title" class="project-card" data-reveal>
-          <div class="project-num">{{ p.num }}</div>
-          <h3 class="project-title">{{ p.title }}</h3>
-          <div class="project-org">{{ p.org }}</div>
-          <div class="project-section">
-            <div class="project-section-label">Context · 背景</div>
-            <p>{{ p.context }}</p>
+        <article
+          v-for="p in projects"
+          :key="p.title"
+          :class="['project-card', { 'project-featured': p.featured }]"
+          data-reveal
+        >
+          <!-- Featured Layout (Project 01 小红书) -->
+          <div v-if="p.featured" class="featured-layout">
+            <div class="featured-primary">
+              <div class="project-header">
+                <span class="project-num">{{ p.num }}</span>
+                <span class="project-badge">核心代表作 · Flagship</span>
+              </div>
+              <h3 class="project-title">{{ p.title }}</h3>
+              <div class="project-org">{{ p.org }}</div>
+
+              <div class="project-section">
+                <div class="project-section-label">Context · 业务背景与痛点</div>
+                <p class="project-context">{{ p.context }}</p>
+              </div>
+
+              <!-- 战绩指标小卡 -->
+              <div v-if="p.metrics" class="featured-metrics">
+                <div v-for="(m, mi) in p.metrics" :key="mi" class="f-metric-card">
+                  <div class="f-metric-val">{{ m.value }}</div>
+                  <div class="f-metric-lbl">{{ m.label }}</div>
+                </div>
+              </div>
+
+              <div class="project-result">
+                <strong>成效达成：</strong>{{ p.result }}
+              </div>
+
+              <a v-if="p.repo" :href="p.repo" target="_blank" rel="noopener" class="project-source">
+                查看 GitHub 开源治理体系 ↗
+              </a>
+            </div>
+
+            <div class="featured-secondary">
+              <div class="project-section-label">What I did · 核心动作拆解</div>
+              <div class="featured-actions">
+                <div v-for="(a, i) in p.actions" :key="i" class="f-action-item">
+                  <div class="f-action-header">
+                    <span class="f-action-num">0{{ i + 1 }}</span>
+                    <strong class="f-action-tag">【{{ a.tag }}】</strong>
+                  </div>
+                  <p class="f-action-text">{{ a.text }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="project-section">
-            <div class="project-section-label">What I did · 我做了什么</div>
-            <ul>
-              <li v-for="(a, i) in p.actions" :key="i">{{ a }}</li>
-            </ul>
-          </div>
-          <div class="project-result">{{ p.result }}</div>
-          <div v-if="p.links" class="play-card-links" style="margin-top: 14px;">
-            <a v-for="(l, li) in p.links" :key="li" :href="l.href" target="_blank" rel="noopener" class="play-card-link">{{ l.label }}</a>
-          </div>
-          <a v-if="p.repo" :href="p.repo" target="_blank" rel="noopener" class="project-source">查看 GitHub 源码 ↗</a>
+
+          <!-- Standard Card Layout (Projects 02 & 03) -->
+          <template v-else>
+            <div class="project-header">
+              <div class="project-num">{{ p.num }}</div>
+            </div>
+            <h3 class="project-title">{{ p.title }}</h3>
+            <div class="project-org">{{ p.org }}</div>
+
+            <div class="project-section">
+              <div class="project-section-label">Context · 背景</div>
+              <p>{{ p.context }}</p>
+            </div>
+
+            <div class="project-section project-section-grow">
+              <div class="project-section-label">What I did · 我做了什么</div>
+              <div class="std-actions">
+                <div v-for="(a, i) in p.actions" :key="i" class="std-action-item">
+                  <div class="std-action-header">
+                    <span class="std-action-dot"></span>
+                    <strong class="std-action-tag">{{ a.tag }}</strong>
+                  </div>
+                  <p class="std-action-text">{{ a.text }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-result">
+              <strong>成效：</strong>{{ p.result }}
+            </div>
+
+            <a v-if="p.repo" :href="p.repo" target="_blank" rel="noopener" class="project-source">
+              查看 GitHub 源码 ↗
+            </a>
+          </template>
         </article>
       </div>
     </div>
