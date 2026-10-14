@@ -313,8 +313,7 @@ const playgrounds = [
           <div v-if="p.featured" class="featured-layout">
             <div class="featured-primary">
               <div class="project-header">
-                <span class="project-num">{{ p.num }}</span>
-                <span class="project-badge">核心代表作 · Flagship</span>
+                <div class="project-num">{{ p.num }}</div>
               </div>
               <h3 class="project-title">{{ p.title }}</h3>
               <div class="project-org">{{ p.org }}</div>
